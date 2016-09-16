@@ -14,9 +14,15 @@ $code-linebg: #dddddd;
 $blue: #0e94ec;
 $accent: $blue;
 
-@import url(https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono);
-$sans: 'Roboto', sans-serif;
-$mono: 'Roboto Mono';
+@import url(fonts.css);
+
+//@import url(https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono);
+//$sans: 'Roboto', sans-serif;
+
+$sans: 'Open Sans', sans-serif;
+$mono: 'Roboto Mono', monospace;
+$disp: 'Patua One', cursive;
+
 
 $border_color: #c2c2c2;
 $pag_label_size: 60px;
@@ -75,6 +81,12 @@ aside {
 
     h2 {
       margin: 15px 0 5px 0;
+    }
+
+    #sitename {
+      font-family: $disp;
+      font-size: 25px
+      //margin: 15px 0 5px 0;
     }
 
     p {
