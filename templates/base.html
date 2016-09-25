@@ -5,11 +5,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="{{ AUTHOR }}">
-  <meta name="description" content="{% block description %}Posts by {{ AUTHOR }}{% endblock %}">
+  <meta name="description" content="{% block description %}Posts by {{ AUTHOR }}{% endblock description %}">
+  {% block head %}
+  <meta name="keywords" content="
+    {%- if GLOBAL_KEYWORDS -%}
+      {{ GLOBAL_KEYWORDS|join(', ') }}
+      {%- if tags -%}{{', '}}{%- endif -%}
+    {%- endif -%}
+    {{tags|join(', ', attribute='0') }}">
+  {% endblock %}
+  
+  {% block opengraph %}
+  <meta property="og:image" content="{{ SITEURL + LOGO_URL }}"/>
+  <meta property="og:title" content="Filippo Gallinaro's blog" />
+  <meta property="og:url" content="{{ SITEURL }}/" />
+  <meta property="og:type" content="website" />
+  {% endblock opengraph %}
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
-
   {% block base %}{% endblock %}
   {% assets filters="pyscss,cssmin", output="css/styles.%(version)s.min.css", "css/style.scss", "css/pygments.css" %}
   <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ ASSET_URL }}">
@@ -29,18 +43,8 @@
   <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />
   {% endif %}
 
-  {% block head %}
-  <meta name="keywords" content="
-    {%- if GLOBAL_KEYWORDS -%}
-      {{ GLOBAL_KEYWORDS|join(', ') }}
-      {%- if tags -%}{{', '}}{%- endif -%}
-    {%- endif -%}
-    {{tags|join(', ', attribute='0') }}">
-  {% endblock %}
 
-  <title>
-    {% block title %}{{ SITENAME }}{% endblock %}
-  </title>
+  <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
 
   {% include "modules/analytics.html" %}
 </head>

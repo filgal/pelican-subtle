@@ -1,7 +1,19 @@
 {% extends "base.html" %}
 {% block title %}{{ page.title|striptags|escape }} | {{ SITENAME }}{% endblock %}
 
+{% block description %}
+{% if page.description %}{{ page.description|e -}}
+{% else -%}{{ AUTHOR }}'s blog | {{ page.title|e -}}
+{% endif %}
+{% endblock description %}
+
 {% block subheader %}{% endblock %}
+{% block opengraph %}
+  <meta property="og:image" content="{{ SITEURL + LOGO_URL }}"/>
+  <meta property="og:title" content="{{ page.title|e }}" />
+  <meta property="og:url" content="{{ SITEURL }}/{{ page.url }}" />
+  <meta property="og:type" content="website" />
+{% endblock opengraph %}
 
         {% block logopicture %}
           {% if ((page.slug == 'about') and USER_LOGO_URL) %} {# and if page.slug == "about" %} #}
