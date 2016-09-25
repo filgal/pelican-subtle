@@ -3,6 +3,14 @@
 
 {% block subheader %}{% endblock %}
 
+        {% block logopicture %}
+          {% if ((page.slug == 'about') and USER_LOGO_URL) %} {# and if page.slug == "about" %} #}
+            <img src="{{ USER_LOGO_URL }}" alt="me" id="myfoto">
+          {% else %} {{ super() }}
+          {% endif %}
+        {% endblock logopicture %}
+
+
 {% block content %}
 <article>
   <div class="article_title">

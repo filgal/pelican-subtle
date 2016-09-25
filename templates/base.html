@@ -106,9 +106,11 @@
   <aside>
     <div id="user_meta">
       <a href="{{ SITEURL }}">
+        {% block logopicture %}
         {% if LOGO_URL %}
         <img src="{{ LOGO_URL }}" alt="logo" id="logo">
         {% endif %}
+        {% endblock logopicture %}
       </a>
       <p id="sitename"><a href="{{ SITEURL }}" class="nohover">{{ SITENAME }}</a></p>
       <p>{{ TAGLINE }}</p>
