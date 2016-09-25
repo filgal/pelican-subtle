@@ -7,16 +7,20 @@
   <meta name="author" content="{{ AUTHOR }}">
   <meta name="description" content="{% block description %}Posts by {{ AUTHOR }}{% endblock %}">
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+
   {% block base %}{% endblock %}
   {% assets filters="pyscss,cssmin", output="css/styles.%(version)s.min.css", "css/style.scss", "css/pygments.css" %}
   <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/{{ ASSET_URL }}">
   {% endassets %}
 
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  
   {% assets filters="slimit", output="js/scripts.%(version)s.min.js", "js/lw-timeago/lw-timeago.js", "js/scroll.js", "js/email.js" %}
   <script src="{{ SITEURL }}/{{ ASSET_URL }}" type="text/javascript"></script>
   {% endassets%}
 
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   {% if FEED_ALL_ATOM %}
   <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
@@ -102,8 +106,8 @@
   <aside>
     <div id="user_meta">
       <a href="{{ SITEURL }}">
-        {% if USER_LOGO_URL %}
-        <img src="{{ USER_LOGO_URL }}" alt="logo" id="logo">
+        {% if LOGO_URL %}
+        <img src="{{ LOGO_URL }}" alt="logo" id="logo">
         {% endif %}
       </a>
       <p id="sitename"><a href="{{ SITEURL }}" class="nohover">{{ SITENAME }}</a></p>
